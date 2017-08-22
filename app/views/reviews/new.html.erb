@@ -1,0 +1,8 @@
+<%= simple_form_for  [@place, @review] do |f| %>
+  <%= f.input :content %>
+  <% if !current_user.nil? %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+  <% end %>
+  <%= f.input :rating, collection: [0,1,2,3,4,5]%>
+  <%= f.submit %>
+<% end %>
