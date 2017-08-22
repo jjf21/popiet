@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  
-
-  get 'places/create'
-  resources :places, only: [:index] do
+  resources :places, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
   end
 
