@@ -1,6 +1,6 @@
 puts 'Erasing all the DB'
 
-
+Review.destroy_all
 MonthlyRating.destroy_all
 WishlistsPlace.destroy_all
 Wishlist.destroy_all
@@ -476,16 +476,26 @@ a = Wishlist.create!(
 a.wishlists_places.create!(
               place_id: Place.last.id
               )
+a.wishlists_places.create!(
+              place_id: Place.first.id
+              )
 #######################################
 
 
 
-# #Review.create!(
-#             user_id: 1,
-#             places_id: 1,
-#             content: "Amazing place ! a lot of wind during my holidays in december ",
-#             rating: 5
-#   )
+Review.create!(
+             user_id: User.first.id,
+             place_id: Place.last.id,
+             content: "Amazing place ! a lot of wind during my holidays in december ",
+             rating: 5
+   )
+
+Review.create!(
+             user_id: User.last.id,
+             place_id: Place.first.id,
+             content: "amazing spot ! Big wave for people like surf with your kite :) ",
+             rating: 2
+   )
 
 
 puts 'Seed Completed'
