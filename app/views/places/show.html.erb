@@ -1,0 +1,8 @@
+<h1><%= @place.name %></h1>
+<%= link_to 'ajouter une review', new_place_review_path(@place) %>
+<h2>Reviews</h2>
+<ul>
+  <% @reviews.each do |review| %>
+      <li><%= review.content %> - <%= review.rating %>/5</li>
+  <% end %>
+</ul>

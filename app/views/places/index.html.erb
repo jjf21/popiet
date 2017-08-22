@@ -1,0 +1,8 @@
+<h1> Tous les lieux </h1>
+<% @places.each do |place| %>
+  Spot : <%= place.name %><br>
+  City : <%= place.city %><br>
+  country : <%= place.country %><br>
+  Wind stats : <%= place.monthly_ratings.count == 12 ? 'complete' : 'incomplete' %><br>
+  <%= link_to 'voir le lieu', place_path(place) %><br><br>
+  <% end %>
