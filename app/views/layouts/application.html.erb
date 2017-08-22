@@ -10,8 +10,6 @@
     <meta name="author" content="Theme Region">
     <meta name="description" content="">
 
-    <title>Seeker | Job Portal HTML Template</title>
-
     <!-- CSS -->
     <link rel="stylesheet" href="theme/css/bootstrap.min.css" >
     <link rel="stylesheet" href="theme/css/font-awesome.min.css">
@@ -35,6 +33,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
+    <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
     <%= yield %>
     <%= render "shared/footer" %>
