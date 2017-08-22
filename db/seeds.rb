@@ -11,11 +11,13 @@ User.create!(
   password: '123456',
   password_confirmation: '123456',
 )
+
 User.create!(
   email: 'augustin.poupard@gmail.com',
   password: '123456',
   password_confirmation: '123456',
 )
+
 User.create!(
   email: 'hauwengeoffroy@gmail.com',
   password: '123456',
