@@ -17,6 +17,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'pundit'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'binding_of_caller'
