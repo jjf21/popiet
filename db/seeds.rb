@@ -3,7 +3,6 @@ puts 'Seeding your app'
 
 
 Place.create!(
-              id:"1"
               city: "Grand Cayman",
               name: "Grand Cayman",
               latitude: " 19.292997",
@@ -14,30 +13,27 @@ Place.create!(
               )
 
 Place.create!(
-              id:"2"
               city: "Nabq Bay",
               name: "Nabq Bay",
               latitude: "50.8833",
               longitude: "1.6667",
-              description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time."
+              description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.",
               photo: "egypt1.jpg",
               country:"Egypt"
               )
 
 Place.create!(
-              id:"3"
               city: "Maui",
               name: "Maui",
               latitude: " 21.289373",
               longitude: " -157.917480",
               description: "Maui is arguably the best known kiteboarding destination in the world, and Kite Beach is probably the best place to experience all that Maui has to offer. The beautiful tropical beach has clean, warm water, steady trade winds, long stretches of calm water, and gentle waves for more experienced riders. The area is full of world-class instructors and amazing athletes. Want to try kiteboarding? Check out Action Sports Maui for lessons and gear.",
-              photo: "hawaii.jpg"
+              photo: "hawaii.jpg",
               country:"Hawaii"
               )
 
 Place.create!(
-              id:"4"
-              city: "CALAMIANES ISLANDS,",
+              city: "CALAMIANES ISLANDS,".downcase,
               name: "CALAMIANES ISLANDS,",
               latitude: " 14.599512",
               longitude: "120.984222",
@@ -47,7 +43,6 @@ Place.create!(
               )
 
 Place.create!(
-              id:"5"
               city: "Jupiter",
               name: "Juno Beach",
               latitude: "26.9338889",
@@ -58,12 +53,11 @@ Place.create!(
               )
 
 Place.create!(
-              id:"6"
               city: "Wissant",
               name: "Wissant",
               latitude: "50.8833",
               longitude: "1.6667",
-              description: "A very large beach of nice and soft sand at low tide, it could be a bit far away to walk to the sea when it's low tide. At high tide there is only a little part of sand which is enough to put the stuff of everyone. There are no rocks. No problem to launch and land kites."
+              description: "A very large beach of nice and soft sand at low tide, it could be a bit far away to walk to the sea when it's low tide. At high tide there is only a little part of sand which is enough to put the stuff of everyone. There are no rocks. No problem to launch and land kites.",
               photo: "wissant.jpg",
               country:"France"
               )
