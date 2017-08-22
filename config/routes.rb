@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   resources :places, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
+    resources :wishlists_places, only: [:new, :create, :destroy]
   end
 
   resources :wishlists, only: [:index, :new, :create, :destroy]
+  
+
 
   devise_for :users
   root to: 'pages#home'
