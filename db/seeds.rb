@@ -232,8 +232,8 @@ place3 = Place.create!(
 ############################
 
 place4 = Place.create!(
-              city: "CALAMIANES ISLANDS,".downcase,
-              name: "CALAMIANES ISLANDS,".downcase,
+              city: "CALAMIANES ISLANDS".downcase,
+              name: "CALAMIANES ISLANDS".downcase,
               latitude:  14.599512,
               longitude: 120.984222,
               description: "The unspoiled tranquility of the Calamines Islands may be a plane and a boat ride away, but the perfect and uncrowded kitesurfing conditions make the extra effort worth it. The secluded area has conditions for every skill level: open water chop or silky smooth water all surrounded by unspoiled beauty. For island tours, lessons, and equipment get in touch with the solar powered kite camp 250K Kitesurf Camp.",
