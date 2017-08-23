@@ -15,7 +15,7 @@ class WishlistsPlacesController < ApplicationController
 
     if wish_place.save
       flash[:notice] = "Added to your wishlist added"
-      redirect_to wishlists_path(place)
+      redirect_to place_path(place)
     else
       flash[:alert] = "Can't add to wishlist"
       redirect_to place_path(place)
