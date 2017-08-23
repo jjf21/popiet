@@ -4,7 +4,7 @@
   City : <%= place.city %><br>
   country : <%= place.country %><br>
   Wind stats : <%= place.monthly_ratings.count == 12 ? 'complete' : 'incomplete' %><br>
-  <%= link_to 'voir le lieu', place_path(place) %><br><br>
+  <%= link_to 'show the spot', place_path(place) %><br><br>
   <% end %>
 
   <div id="map" style="width: 100%; height: 600px;"></div>

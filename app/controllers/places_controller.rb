@@ -16,5 +16,10 @@ end
     @place = Place.find(params[:id])
     authorize @place
     @reviews = @place.reviews
+
+     @hash = Gmaps4rails.build_markers(@place) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
   end
+end
 end
