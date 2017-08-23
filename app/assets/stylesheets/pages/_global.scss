@@ -25,11 +25,11 @@ a:focus,
 input:focus {
   text-decoration:none;
   outline: none;
-  color:#008def;
+  color:$blue;
 }
 
 a:hover {
-  color:#008def;
+  color:$blue;
 }
 
 a:active,
@@ -76,8 +76,8 @@ input:focus, textarea:focus, select:focus,
 .btn.btn-primary {
   padding: 8px 20px 5px;
   text-transform: uppercase;
-  background-color: #008def;
-  border-color: #008def;  
+  background-color: $blue;
+  border-color: $blue;  
 }
 
 .btn i {
@@ -112,11 +112,11 @@ input:focus, textarea:focus, select:focus,
 }
 
 .btn:hover {
-  color: #008def;
+  color: $blue;
 }
 
 .btn:focus {
-  border-color: #008def;
+  border-color: $blue;
 }
 
 .section-before {
@@ -163,7 +163,7 @@ input:focus, textarea:focus, select:focus,
 
 .form-control:focus {
   color: #2d3038;
-  border-color: #008def;
+  border-color: $blue;
 }
 
 .title-after {
@@ -206,7 +206,7 @@ input:focus, textarea:focus, select:focus,
 }
 
 .bookmark .remove-icon:hover {
-  background-color: #008def;
+  background-color: $blue;
 }
 
 .jqte_editor {
