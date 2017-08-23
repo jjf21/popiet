@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
       redirect_to place_path(place)
     end
 
-
   end
   
   private
