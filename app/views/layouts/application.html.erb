@@ -6,11 +6,11 @@
     <title>Kite advisor - Next place to ride ?</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="theme/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="theme/css/font-awesome.min.css">
-    <link rel="stylesheet" href="theme/css/jquery-te.css">
-    <link rel="stylesheet" href="theme/css/slick.css">
-    <link rel="stylesheet" href="theme/css/responsive.css">
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/jquery-te.css">
+    <link rel="stylesheet" href="/theme/css/slick.css">
+    <link rel="stylesheet" href="/theme/css/responsive.css">
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
@@ -25,24 +25,22 @@
     <%= yield %>
     <%= render "shared/footer" %>
 
-     <!-- JS -->
-     <%= javascript_include_tag 'application' %>
-    <script src="theme/js/jquery.min.js"></script>
-    <script src="theme/js/bootstrap.min.js"></script>
-    <script src="theme/js/inview.min.js"></script>
-    <script src="theme/js/counterup.min.js"></script>
-    <script src="theme/js/waypoints.min.js"></script>
-    <script src="theme/js/slick.min.js"></script>
-    <script src="theme/js/jquery-te.min.js"></script>
+    <!-- JS -->
+    <%= javascript_include_tag 'application' %>
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
-    <script src="theme/js/gmaps.min.js"></script>
-    <script src="theme/js/main.js"></script>
-
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+    <script src="/theme/js/jquery.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+    <script src="/theme/js/inview.min.js"></script>
+    <script src="/theme/js/counterup.min.js"></script>
+    <script src="/theme/js/waypoints.min.js"></script>
+    <script src="/theme/js/slick.min.js"></script>
+    <script src="/theme/js/jquery-te.min.js"></script>
+    <script src="/theme/js/gmaps.min.js"></script>
+    <script src="/theme/js/main.js"></script>
 
-    <%= javascript_include_tag "application" %>
 
     <%= yield(:after_js) %>
   </body>
