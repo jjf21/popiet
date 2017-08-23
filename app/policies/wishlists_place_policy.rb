@@ -10,7 +10,6 @@ class WishlistsPlacePolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
-    #record.wishlist.
+    record.wishlist.user_id == user.id
   end
 end
