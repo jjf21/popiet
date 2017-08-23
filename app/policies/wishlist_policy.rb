@@ -8,4 +8,8 @@ class WishlistPolicy < ApplicationPolicy
   def create?
     user
   end
+
+  def destroy?
+    record.user_id == user.id
+  end
 end

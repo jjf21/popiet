@@ -17,6 +17,14 @@ class WishlistsController < ApplicationController
     end
   end
 
+  def destroy
+    wishlist = Wishlist.find(params[:id])
+    authorize wishlist
+    wishlist.destroy
+    flash[:notice] = "Wishlist deleted"
+    redirect_to wishlists_path
+  end
+
   private
 
   def wishlist_params

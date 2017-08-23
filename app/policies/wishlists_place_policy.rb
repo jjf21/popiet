@@ -8,4 +8,9 @@ class WishlistsPlacePolicy < ApplicationPolicy
   def create?
     user
   end
+
+  def destroy?
+    true
+    #record.wishlist.
+  end
 end
