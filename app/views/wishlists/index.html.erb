@@ -25,10 +25,11 @@
     </div>
   </div><br>
   <% @wishlists.each do |wishlist| %>
-    <h3><%= wishlist.name %></h3>
+    <h3><%= wishlist.name %> <%= link_to 'delete', wishlist_path(wishlist), method: :delete %> </h3>
       <% if !wishlist.places.nil? %>
         <%  wishlist.places.each do |place|%>
           <p><%= place.name %></p>
+          <%= link_to 'daaaaete', place_wishlists_place_path(place, wishlist.wishlists_places.first), method: :delete %>
         <% end %>
       <% end %>
   <% end %>

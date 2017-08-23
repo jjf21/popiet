@@ -24,6 +24,10 @@ class WishlistsPlacesController < ApplicationController
   end
 
   def destroy
+    wishlist_place = WishlistsPlace.find(params[:id])
+    authorize wishlist_place
+    wishlist_place.destroy
+    redirect_to wishlists_path
   end
 
   private
