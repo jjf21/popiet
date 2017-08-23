@@ -3,8 +3,8 @@ class WishlistsPlacesController < ApplicationController
   def create
     place = Place.find(params[:place_id])
     if !current_user.wishlists.nil?
-      #ONLY ONE WISHLIST
-      wishlist_id = current_user.wishlists.first.id
+      
+      wishlist_id = params[:wishlist]
       wish_place = place.wishlists_places.new(wishlist_id: wishlist_id)
     else
       flash[:alert] = "Please Create a wishlist first"
@@ -24,6 +24,12 @@ class WishlistsPlacesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def wishlists_place_params
+    params.require(:wishlists_place).permit(:wishlist_id)
   end
 
 end

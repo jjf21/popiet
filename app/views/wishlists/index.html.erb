@@ -25,10 +25,10 @@
     </div>
   </div><br>
   <% @wishlists.each do |wishlist| %>
-    <h3><%= wishlist.name %><h3><br>
-      <% if !wishlist.wishlists_places.nil? %>
-        <%  wishlist.wishlists_places.each do |wish_place|%>
-          <%= wish_place.place.name %><br>
+    <h3><%= wishlist.name %></h3>
+      <% if !wishlist.places.nil? %>
+        <%  wishlist.places.each do |place|%>
+          <p><%= place.name %></p>
         <% end %>
       <% end %>
   <% end %>
