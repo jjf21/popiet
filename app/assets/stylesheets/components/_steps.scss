@@ -1,0 +1,29 @@
+.tr-steps {
+  background-image: url(../images/bg/step-bg.jpg);  
+  position: relative;
+  z-index: 1;
+}
+
+.tr-steps .step {
+  font-size: 14px;
+  line-height: 24px;  
+  color: #fff;
+  padding:20px 10px 10px;
+}
+
+.tr-steps .step-image {
+  min-height: 75px;
+  margin-bottom: 15px;
+}
+
+.tr-steps h1 {
+  font-size: 20px;
+  color: #00aeef;
+  margin: 0;
+}
+
+.tr-steps h2 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 10px 0 30px;
+}

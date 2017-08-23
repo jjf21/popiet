@@ -1,0 +1,53 @@
+.footer-top {
+  background-color: #fff;
+}
+
+.footer-widget h3 {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 35px;
+}
+
+.footer-widget li {
+  margin-bottom: 20px;
+}
+
+.footer,
+.footer a {
+  color: #858585;
+}
+
+.footer a:hover {
+  color: #008def;
+}
+
+.footer-bottom {
+  padding: 25px 0 15px;
+}
+
+.footer .copyright {
+  float: left;
+}
+
+.footer-social li {
+  float: left;
+}
+
+.footer-social li+li {
+  margin-left: 20px;
+}
+
+.footer-social li a {
+  font-size: 16px;
+  color: #d1cfd1;
+}
+
+.footer-widget .form-control {
+  margin: 30px 0 20px;
+  background-color: transparent;
+}
+
+.footer-widget .btn {
+  padding: 5px 20px;
+  text-transform: capitalize;
+}
