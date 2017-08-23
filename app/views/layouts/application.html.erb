@@ -3,30 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>KITEVISOR</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Theme Region">
-    <meta name="description" content="">
+    <title>Kite advisor - Next place to ride ?</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="theme/css/bootstrap.min.css" >
     <link rel="stylesheet" href="theme/css/font-awesome.min.css">
     <link rel="stylesheet" href="theme/css/jquery-te.css">
     <link rel="stylesheet" href="theme/css/slick.css">
-    <link rel="stylesheet" href="theme/css/main.css">
     <link rel="stylesheet" href="theme/css/responsive.css">
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-
-    <!-- icons -->
-    <link rel="icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="images/ico/apple-touch-icon-57-precomposed.png">
     <!-- icons -->
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -37,8 +24,9 @@
     <%= render "shared/flashes" %>
     <%= yield %>
     <%= render "shared/footer" %>
-    <%= javascript_include_tag 'application' %>
+    
      <!-- JS -->
+     <%= javascript_include_tag 'application' %>
     <script src="theme/js/jquery.min.js"></script>
     <script src="theme/js/bootstrap.min.js"></script>
     <script src="theme/js/inview.min.js"></script>
