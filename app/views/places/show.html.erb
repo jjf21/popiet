@@ -30,14 +30,40 @@
 
   <!-- METEO -->
   <div class='row'>
-    <div class='box'>
-      <div class='box-title'>Forecast</div>
+    <div class='box' id='forecast'>
+      <div class='box-title'>Best Period</div>
+      <!-- style -->
+      <div id="chart">
+        <ul id="bars">
+          <% @place.monthly_ratings.each do |rating| %> 
+            <li>
+              <div data-percentage="<%= rating.rating %>" class="bar"></div><span><%= Date::MONTHNAMES[rating.month_number.to_i] %></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <!-- style -->
+
     </div>
   </div>
 </div>
 <div id="map" style="width: 100%; height: 600px;"></div>
 
-
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(function() {
+  $("#bars li .bar").each( function( key, bar ) {
+    var percentage = $(this).data('percentage') * 20;
+    
+    $(this).css('height', percentage + '%');
+    
+    $(this).animate({
+      'height' : percentage + '%'
+    }, 1000);
+  });
+});
+  <% end %>
+<% end %>
 
 
 
