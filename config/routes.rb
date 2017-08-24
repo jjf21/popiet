@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :wishlists, only: [:index, :new, :create, :destroy]
-  
-  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+
 
 
   devise_for :users,
