@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @places = Place.last(3)
+    @wishlist = Wishlist.new
   end
 end

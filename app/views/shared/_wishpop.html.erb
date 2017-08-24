@@ -12,19 +12,27 @@
       </div>
       <div class="modal-body">
         <% if !current_user.nil? && !current_user.wishlists.nil? %>
-          <ul class='wishlist-list'>
+          <ul class='wishlist-list' id='wishlists'>
             <% current_user.wishlists.each do |wishlist| %>
               <li class='wish-items'>
                 <%= link_to place_wishlists_places_path(place, wishlist: wishlist.id), method: :post do%>
-                  <span><%= wishlist.name %></span>
+                  <span style='font-size:17px;'><%= wishlist.name %></span>
                   <span style='float:right'><i class='fa fa-heart-o'></i></span>
                 <% end %>
               </li>
             <% end %>
           </ul>
-        <% else %>
-          <p>For now, please create a first wishlist <%= link_to "here", wishlists_path %></p>
         <% end %>
+        <div class="user-account" style='padding:0 40px;'>
+          <%= simple_form_for(@wishlist) do |form| %>
+            <div class='col-md-8'>
+              <%= form.input :name, placeholder: "Wishlist name", label: false %>
+            </div>
+            <div class='col-md-4'>
+              <%= form.button :button, 'Create', class:'btn btn-primary higher-btn'%>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
