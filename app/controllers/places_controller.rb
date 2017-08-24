@@ -16,6 +16,7 @@ end
   def show
     @place = Place.find(params[:id])
     authorize @place
+    @review = Review.new
     @reviews = @place.reviews
 
      @hash = Gmaps4rails.build_markers(@place) do |place, marker|

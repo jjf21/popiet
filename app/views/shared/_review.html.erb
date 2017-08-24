@@ -1,0 +1,18 @@
+<div class="message">
+  <% if review.user.facebook_picture_url.blank? %>
+    <%= image_tag "http://www.jobsenboite.com/images/avatar/default-avatar.png", class: "avatar-large" %>
+  <% else %>
+    <%= image_tag review.user.facebook_picture_url, class: "avatar-large" %>
+  <% end %>
+
+  <div class="message-body">
+    <p><%= review.content %></p>
+  </div>
+  <div class="message-status">
+    <p class="price">
+      <% 5.times do |i|  %>
+        <%= review.rating - (i) > 0 ? '<i class="fa fa-star" aria-hidden="true"></i>'.html_safe : '<i class="fa fa-star-o" aria-hidden="true"></i>'.html_safe %>
+      <%end %>
+    </p>
+  </div>
+</div>
