@@ -1,0 +1,20 @@
+<div class="tr-breadcrumb bg-image section-before" style='background-image: url(<%= image_path place.photo %>);'>
+    <div class="container">
+      <div class="breadcrumb-info text-center">
+        <div class="breadcrumb-logo">
+        </div>
+        <div class="page-title">
+          <h1><%= place.name %></h1>
+        </div>
+        <ul class="tr-list job-meta list-inline">
+          <li><i class="fa fa-map-signs" aria-hidden="true"></i><%= place.city %>, <%= place.country %></li>
+        </ul> 
+        <div class="buttons">
+          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-briefcase" aria-hidden="true"></i>Add to wishlist</a>
+          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ReviewModal"><i class="fa fa-briefcase" aria-hidden="true"></i>Add a review</a>
+          <span class="btn button-share"><i class="fa fa-share-alt" aria-hidden="true"></i>Share <span><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></span></span>
+        </div>   
+      </div>
+    </div><!-- /.container -->
+  </div>
+<%= render 'shared/wishpop', place: @place %> 

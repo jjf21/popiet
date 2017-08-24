@@ -25,14 +25,15 @@
     </div>
   </div><br>
   <% @wishlists.each do |wishlist| %>
-    <h3><%= wishlist.name %> <%= link_to 'delete', wishlist_path(wishlist), method: :delete %> </h3>
-      <% if !wishlist.places.nil? %>
+    <h3><%= wishlist.name.upcase %> <%= link_to 'delete', wishlist_path(wishlist), method: :delete %> </h3>
+      <% if !wishlist.places.blank? %>
         <%  wishlist.places.each do |place|%>
           <div class='col-md-4'>
-            <%= render 'shared/homecard', place: place %>
-            <%= link_to 'delete', place_wishlists_place_path(place, wishlist.wishlists_places.first), method: :delete %>
+            <%= render 'shared/wishcard', place: place, wishlist: wishlist %>
           </div>
         <% end %>
+      <% else %>
+        <p>Your wishlist is empty, take a look at <%= link_to 'all our places', places_path %> to add one here</p>
       <% end %>
   <% end %>
 </div>

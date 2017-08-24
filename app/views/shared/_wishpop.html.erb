@@ -11,7 +11,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <% if !current_user.wishlists.nil? %>
+        <% if !current_user.nil? && !current_user.wishlists.nil? %>
           <ul>
             <% current_user.wishlists.each do |wishlist| %>
               <li>

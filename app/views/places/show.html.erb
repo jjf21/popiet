@@ -1,37 +1,61 @@
+
+  <%= render 'shared/bannershow', place: @place %>
 <div class='container'>
-  <h1><%= @place.name %></h1>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-    Add to wishlist
-  </button>
-  <%= render 'shared/wishpop', place: @place %>
-  <br>
-  <%= link_to 'ajouter une review', new_place_review_path(@place) %>
-  <h2>Reviews</h2>
-  <ul>
-    <% @reviews.each do |review| %>
-        <li><%= review.content %> - <%= review.rating %>/5</li>
-    <% end %>
-  </ul>
 
+  <!-- DESCRIPTION -->
+  <div class='row'>
+    <div class='box'>
+      <div class="box-title">Description</div>
+      <p><%= @place.description %></p>
+    </div>
+  </div>
 
-    <div id="map" style="width: 100%; height: 600px;"></div>
+  <!-- REVIEW -->
+  <div class='row'>
+    <div class='box'>
+      <div class='box-title'>
+        Reviews
+        <button type="button" class="btn btn-primary" style='float:right;' data-toggle="modal" data-target="#ReviewModal">Add a review</button>
+      </div>
+      <% if @reviews.count > 0 %>
+        <% @reviews.each do |review| %>
+          <%= render 'shared/review', review: review %>
+        <% end %>
+      <% else %>
+        <p> Aucun avis pour le moment </p>
+      <% end %>
+      <%= render 'shared/reviewpop', place: @place %>
+    </div>
+  </div>
 
-  <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
-        });
-      });
-    <% end %>
-  <% end %>
+  <!-- METEO -->
+  <div class='row'>
+    <div class='box'>
+      <div class='box-title'>Forecast</div>
+    </div>
+  </div>
 </div>
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
 

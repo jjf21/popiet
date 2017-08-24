@@ -1,0 +1,154 @@
+.tr-breadcrumb {
+  color: #fff;
+  padding: 100px 0;
+  overflow: hidden;
+  margin-bottom:20px;
+}
+
+.page-title h1 {
+  font-size: 48px;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.tr-breadcrumb .job-meta {
+  margin-top: 20px;
+}
+
+.breadcrumb {
+  padding: 0;
+  border: 0;
+  font-size: 18px;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+
+.breadcrumb li.active,
+.breadcrumb li a,
+.breadcrumb>li+li:before,
+.tr-breadcrumb .job-meta li,
+.tr-breadcrumb .job-meta li a {
+  color: #fff;
+}
+
+.breadcrumb-logo img,
+.user-image img {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.user-image,
+.breadcrumb-logo {
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 100%;
+  margin-bottom: 30px;
+}
+
+.user-image {
+  border: 8px solid #fff;
+}
+
+.tr-breadcrumb .job-meta li {
+  font-size: 14px;
+}
+
+.breadcrumb-social {
+  margin-top: 35px;
+}
+
+.breadcrumb-social li {
+  display: inline-block;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.breadcrumb-social li:last-child {
+  margin-right: -0px;
+}
+
+.breadcrumb-social li a i {
+  color: #fff;
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 100%;
+}
+
+.breadcrumb-social li a {
+  display: block;
+  position: relative;
+  z-index: 9;
+}
+
+.breadcrumb-social span,
+.button-share span {
+  color: #2d373d;
+  font-size: 12px;
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f5f5f6;
+  border-radius: 30px;
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  min-width: 90px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 99999999999;
+  -webkit-transform:translateX(-50%) ;
+  -moz-transform:translateX(-50%) ;
+  -ms-transform:translateX(-50%) ;
+  -o-transform:translateX(-50%) ;
+  transform:translateX(-50%) ;
+}
+
+.breadcrumb-social span:after,
+.button-share span:after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -7px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #f5f5f6;
+}
+
+.breadcrumb-social li a:hover span {
+  opacity: 1;
+  visibility: visible;
+  bottom: -40px;
+}
+
+.social-icon-bg i.fa-facebook {
+  background-color: #344f88;
+}
+
+.social-icon-bg i.fa-twitter {
+  background-color: #2696cf;
+}
+
+.social-icon-bg i.fa-google-plus {
+  background-color: #d34132;
+}
+
+.social-icon-bg i.fa-linkedin {
+  background-color: #146ba4;
+}
+
+.social-icon-bg i.fa-dribbble {
+  background-color: #d74279;
+}
+
+.social-icon-bg i.fa-behance {
+  background-color: #050607;
+}
+
+.social-icon-bg i.fa-globe {
+  background-color: #e96324;
+}
