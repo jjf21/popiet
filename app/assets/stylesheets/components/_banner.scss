@@ -1,8 +1,8 @@
 .tr-banner {
   color: #fff;
   padding: 120px 0;
-  background-image: url(../images/bg/banner.jpg);
   margin-bottom:30px;
+  height: 95vh;
 }
 
 .banner-content h1 {
@@ -105,9 +105,9 @@
   color: $gray;
 }
 
-.banner-form .form-control, 
-.banner-form button.btn-primary, 
-.banner-form .dropdown {  
+.banner-form .form-control,
+.banner-form button.btn-primary,
+.banner-form .dropdown {
   float: left;
   height:46px;
   margin-bottom: 0;
