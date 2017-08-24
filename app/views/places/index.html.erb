@@ -1,6 +1,30 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-6 col-xs-12'>
+      <div class='banner-form index'>
+        <form action="<%= places_path %>" class='index'>
+            
+          <div class="dropdown tr-change-dropdown index">
+            <select name="start_month" class="form-control">
+              <option selected value="">Start Month</option>
+              <% months = %w[January February March April May June July August September October November December] %> 
+              
+              <% months.each_with_index do |month, index| %>
+                <option value='<%= index + 1 %>'><%= month %></option>
+              <% end %>
+            </select>
+          </div><!-- /.category-change -->
+          <div class="dropdown tr-change-dropdown index">
+            <select name="end_month" class="form-control">
+              <option selected value="">End Month</option>
+              <% months.each_with_index do |month, index| %>
+                <option value='<%= index + 1 %>'><%= month %></option>
+              <% end %>
+            </select>
+          </div><!-- /.category-change -->
+          <button type="submit" class="btn btn-primary" value="Search">Search</button>
+        </form>
+      </div>
       <% @places.each do |place| %> 
         <%= render 'shared/cardindex', place: place %>
       <% end %>
