@@ -1,35 +1,10 @@
 <div class='container'>
   <h1><%= @place.name %></h1>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Add to wishlist
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLongTitle">Add to whishlist</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <% if !current_user.wishlists.nil? %>
-          <ul>
-            <% current_user.wishlists.each do |wishlist| %>
-              <li><%= link_to wishlist.name, place_wishlists_places_path(@place, wishlist: wishlist.id), method: :post %></li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>For now, please create a first wishlist <%= link_to "here", wishlists_path %></p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div><br>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+    Add to wishlist
+  </button>
+  <%= render 'shared/wishpop', place: @place %>
+  <br>
   <%= link_to 'ajouter une review', new_place_review_path(@place) %>
   <h2>Reviews</h2>
   <ul>
