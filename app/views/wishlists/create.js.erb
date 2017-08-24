@@ -1,0 +1,13 @@
+<% if @wishlist.errors.any? %>
+  // Render new wishlist form with errors
+  console.log('hehe')
+<% else %>
+  // Create a paragraph for the new wishlist. But hide it.
+  var new_wishlist = '<li>hello</li>'
+  // Add it to the DOM, at the end of the existing wishlists. It's still hidden.
+  $('#wishlists').append(new_wishlist);
+  // Show the new wishlist with an animation!
+  new_wishlist.slideDown();
+  // Reset the form
+  //$('#new_wishlist').html("<%= j render 'wishlists/form', restaurant: @restaurant, wishlist: wishlist.new %>");
+<% end %>
