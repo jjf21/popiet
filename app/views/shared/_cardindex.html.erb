@@ -1,7 +1,8 @@
 <figure class="snip0051">
-  <a class='icon-wishlist'><i class='fa fa-heart-o'></i></a>
+  <a class='icon-wishlist' data-toggle="modal" data-target="#exampleModalLong<%= place.id %>"><i class='fa fa-heart-o'></i></a>
   <div class='div-img' style='height:250px; background: url(<%= image_path place.photo %>); background-size: cover;'>
   </div>
+  <%= render 'shared/wishpop', place: place %>
   <figcaption>
     <h2><%= place.name %></h2> 
     <p><%= place.description.first(70) + '... ' %><%= link_to 'Read More', place_path(place)%> </p>

@@ -1,0 +1,19 @@
+.modal-title{
+  text-transform: uppercase;
+  color: $gray;
+}
+
+ul.wishlist-list{
+  list-style: none;
+}
+
+ul.wishlist-list > li.wish-items{
+  border-top: 1px solid lightgray;
+  margin-right: 40px;
+  padding: 20px;
+  text-transform: capitalize;
+}
+
+ul.wishlist-list > li.wish-items:first-child{
+  border-top: none;
+}

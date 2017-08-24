@@ -115,6 +115,10 @@ input:focus, textarea:focus, select:focus,
   color: $blue;
 }
 
+.btn-success:hover {
+  color: $green;
+}
+
 .btn:focus {
   border-color: $blue;
 }
