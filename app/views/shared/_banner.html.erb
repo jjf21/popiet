@@ -6,15 +6,24 @@
         <h2>We go over wind stats and user reviews to give you the best match</h2>
         <div class="banner-form">
           <form action="<%= places_path %>">
-            <input type="text" class="form-control" placeholder="Job Keyword">
+            
             <div class="dropdown tr-change-dropdown">
-              <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">Start Period</span><i class="fa fa-angle-down"></i></a>
-              <ul class="dropdown-menu tr-change">
-                <li><a href="#">End Period</a></li>
-                <li><a href="#">Location 1</a></li>
-                <li><a href="#">Location 2</a></li>
-                <li><a href="#">Location 3</a></li>
-              </ul>
+              <select name="start_month" class="form-control">
+                <option selected value="">Start Month</option>
+                <% months = %w[January February March April May June July August September October November December] %> 
+                
+                <% months.each_with_index do |month, index| %>
+                  <option value='<%= index + 1 %>'><%= month %></option>
+                <% end %>
+              </select>
+            </div><!-- /.category-change -->
+            <div class="dropdown tr-change-dropdown">
+              <select name="end_month" class="form-control">
+                <option selected value="">End Month</option>
+                <% months.each_with_index do |month, index| %>
+                  <option value='<%= index + 1 %>'><%= month %></option>
+                <% end %>
+              </select>
             </div><!-- /.category-change -->
             <button type="submit" class="btn btn-primary" value="Search">Search</button>
           </form>
