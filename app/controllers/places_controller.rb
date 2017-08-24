@@ -2,6 +2,7 @@ class PlacesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    @wishlist = Wishlist.new
     @places = policy_scope(Place)
     @places = Place.where.not(latitude: nil, longitude: nil)
 
@@ -25,6 +26,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @wishlist = Wishlist.new
     @place = Place.find(params[:id])
     authorize @place
     @review = Review.new
