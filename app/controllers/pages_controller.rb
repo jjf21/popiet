@@ -3,6 +3,5 @@ class PagesController < ApplicationController
 
   def home
     @places = Place.last(3)
-
   end
 end

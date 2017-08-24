@@ -15,7 +15,7 @@
           <% end %>
           <%= f.input :place_id, :as => :hidden, :input_html => { :value => @place.id } %>
           <%= f.input :rating, collection: [0,1,2,3,4,5]%>
-          <%= f.submit class:'btn btn-success' %>
+          <%= f.button :button, class:'btn btn-success' %>
         <% end %>
       </div>
     </div>
