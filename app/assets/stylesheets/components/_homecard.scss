@@ -108,7 +108,7 @@ sans-serif;
   }
   .header {
     @include cf;
-    color: $white;
+    //color: $white;
     padding: 1em;
     .date {
       float: left;

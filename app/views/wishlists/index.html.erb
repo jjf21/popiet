@@ -28,8 +28,10 @@
     <h3><%= wishlist.name %> <%= link_to 'delete', wishlist_path(wishlist), method: :delete %> </h3>
       <% if !wishlist.places.nil? %>
         <%  wishlist.places.each do |place|%>
-          <p><%= place.name %></p>
-          <%= link_to 'daaaaete', place_wishlists_place_path(place, wishlist.wishlists_places.first), method: :delete %>
+          <div class='col-md-4'>
+            <%= render 'shared/homecard', place: place %>
+            <%= link_to 'delete', place_wishlists_place_path(place, wishlist.wishlists_places.first), method: :delete %>
+          </div>
         <% end %>
       <% end %>
   <% end %>
