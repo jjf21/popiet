@@ -5,30 +5,23 @@ class WishlistsController < ApplicationController
   end
 
   def create
-
-    wishlist = current_user.wishlists.new(wishlist_params)
-    authorize wishlist
-    ####WORKING NO AJAX#######
-    if wishlist.save
-      flash[:notice] = "Wishlist created"
-      redirect_to wishlists_path
-    else
-      flash[:alert] = "Can't create a wishlist"
-      redirect_to wishlists_path
+    if !params[:place_id].blank?
+      @place = Place.find(params[:place_id])
     end
-    ######END#################
+    @wishlist = current_user.wishlists.new(wishlist_params)
+    authorize @wishlist
 
-    # if @wishlist.save
-    #   respond_to do |format|
-    #     format.html { redirect_to root_path }
-    #     format.js  # <-- will render `app/views/reviews/create.js.erb`
-    #   end
-    # else
-    #   respond_to do |format|
-    #     format.html { render 'pages/home' }
-    #     format.js  # <-- idem
-    #   end
-    # end
+    if @wishlist.save
+      respond_to do |format|
+        format.html { redirect_to wishlists_path }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render 'wishlists/index' }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def destroy
