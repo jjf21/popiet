@@ -8,6 +8,16 @@ class PlacesController < ApplicationController
 
     start_month = params["start_month"]
     end_month = params["end_month"]
+
+    if end_month.to_i < start_month.to_i
+      a = start_month
+      start_month = end_month
+      end_month = a 
+    end
+
+    @start_month = params["start_month"].to_i
+    @end_month = params["end_month"].to_i
+
     if start_month.blank? && !end_month.blank?
       start_month = end_month
     end    

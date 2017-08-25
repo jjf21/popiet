@@ -31,14 +31,17 @@
     <%= render 'shared/nothing' %>
   <% else %>
     <div class='row'>
-      <h1>My wishlists</h1>
-    <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+      <h1>
+        My wishlists
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
         Add a wishlist
-      </button>
+        </button>
+      </h1>
+    <!-- Button trigger modal -->
+
     </div>
     <% @wishlists.each do |wishlist| %>
-        <div class='row box'>
+        <div class='row box' style='margin-top:20px'>
           <div class="box-title">
             <%= wishlist.name.upcase %> <%= link_to "<i class='fa fa-times'></i>".html_safe, wishlist_path(wishlist), method: :delete %>
           </div>

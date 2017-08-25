@@ -6,11 +6,12 @@
             
           <div class="dropdown tr-change-dropdown index">
             <select name="start_month" class="form-control">
-              <option selected value="">Start Month</option>
+              <option value="">Start Month</option>
               <% months = %w[January February March April May June July August September October November December] %> 
               
               <% months.each_with_index do |month, index| %>
-                <option value='<%= index + 1 %>'><%= month %></option>
+                
+                <option value='<%= index + 1 %>' <%= 'selected' if index + 1 == @start_month %> ><%= month %></option>
               <% end %>
             </select>
           </div><!-- /.category-change -->
@@ -18,7 +19,7 @@
             <select name="end_month" class="form-control">
               <option selected value="">End Month</option>
               <% months.each_with_index do |month, index| %>
-                <option value='<%= index + 1 %>'><%= month %></option>
+                <option value='<%= index + 1 %>' <%= 'selected' if index + 1 == @end_month %>><%= month %></option>
               <% end %>
             </select>
           </div><!-- /.category-change -->
@@ -30,7 +31,7 @@
       <% end %>
     </div>
     <div class='col-md-6 col-xs-12'>
-      <div class='sticky-content' style='margin-top:30px;'>
+      <div class='sticky-content' style='margin-top:35px;'>
         <div class="col-md-12">
           <div id="map" style="width: 100%; height: 600px;"></div>
         </div>
