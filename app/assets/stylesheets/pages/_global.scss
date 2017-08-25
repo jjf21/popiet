@@ -80,6 +80,22 @@ input:focus, textarea:focus, select:focus,
   border-color: $blue;  
 }
 
+
+.btn-facebook {
+  padding: 8px 20px 5px;
+  text-transform: uppercase;
+  background-color: #008def;
+  border-color: #008def;  
+}
+
+a.btn.btn-facebook{
+  color:white;
+}
+a.btn.btn-facebook:hover{
+  color: #008def;
+}
+
+
 .btn i {
   float: left;
   font-size: 20px;  
