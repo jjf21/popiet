@@ -1,41 +1,58 @@
 <div class='container'>
-  <div class='row'>
-      <h1>My wishlists</h1>
-    <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-        Add a wishlist
-      </button>
-  </div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add a wishlist</h5>
+          <h5 class="modal-title text-center" id="exampleModalLongTitle">Add a wishlist</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= simple_form_for @wishlist do |f| %>
-            <%= f.input :name %>
-            <%= f.submit class:'btn btn-primary'%>
-          <% end %>
+          <div class="user-account" style='padding:0 40px;'>
+            <%= simple_form_for @wishlist do |form| %>
+              <div class='col-md-8'>
+                <%= form.input :name, placeholder: "Wishlist name", label: false, class:'wishlist_name' %>
+              </div>
+              <div class='col-md-4'>
+                <%= form.button :button, 'Create', class:'btn btn-primary higher-btn'%>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div><br>
-  <% @wishlists.each do |wishlist| %>
-    <h3><%= wishlist.name.upcase %> <%= link_to 'delete', wishlist_path(wishlist), method: :delete %> </h3>
-      <% if !wishlist.places.blank? %>
-        <%  wishlist.places.each do |place|%>
-          <div class='col-md-4'>
-            <%= render 'shared/wishcard', place: place, wishlist: wishlist %>
+  
+  <% if @wishlists.blank? %>
+    <%= render 'shared/nothing' %>
+  <% else %>
+    <div class='row'>
+      <h1>My wishlists</h1>
+    <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+        Add a wishlist
+      </button>
+    </div>
+    <% @wishlists.each do |wishlist| %>
+        <div class='row box'>
+          <div class="box-title">
+            <%= wishlist.name.upcase %> <%= link_to "<i class='fa fa-times'></i>".html_safe, wishlist_path(wishlist), method: :delete %>
           </div>
-        <% end %>
-      <% else %>
-        <p>Your wishlist is empty, take a look at <%= link_to 'all our places', places_path %> to add one here</p>
-      <% end %>
+          <% if !wishlist.places.blank? %>
+            <%  wishlist.places.each do |place|%>
+              <div class='col-md-4'>
+                <%= render 'shared/cardwish', place: place, wishlist: wishlist %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>Your wishlist is empty, take a look at <%= link_to 'all our places', places_path %> to add one here</p>
+          <% end %>
+        </div>
+    <% end %>
+
   <% end %>
 </div>
