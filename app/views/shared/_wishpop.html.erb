@@ -5,7 +5,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLongTitle">Add to whishlist</h5>
+        <h5 class="modal-title text-center" id="exampleModalLongTitle">Add to whishlist - <%= link_to 'All my wishlists', wishlists_path %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -14,25 +14,24 @@
         <% if !current_user.nil? && !current_user.wishlists.nil? %>
           <ul class='wishlist-list' id='wishlists'>
             <% current_user.wishlists.each do |wishlist| %>
-              <li class='wish-items'>
-                <%= link_to place_wishlists_places_path(place, wishlist: wishlist.id), method: :post do%>
-                  <span style='font-size:17px;'><%= wishlist.name %></span>
-                  <span style='float:right'><i class='fa fa-heart-o'></i></span>
-                <% end %>
-              </li>
+              <%= render 'shared/wishpopline', place: place, wishlist: wishlist %>
             <% end %>
           </ul>
         <% end %>
+
         <div class="user-account" style='padding:0 40px;'>
-          <%= simple_form_for(@wishlist) do |form| %>
+          <%= simple_form_for(@wishlist, remote: true) do |form| %>
             <div class='col-md-8'>
-              <%= form.input :name, placeholder: "Wishlist name", label: false %>
+              <%= form.input :name, placeholder: "Wishlist name", label: false, class:'wishlist_name' %>
+              <input type='hidden' name='place_id' value='<%= place.id %>'>
             </div>
             <div class='col-md-4'>
               <%= form.button :button, 'Create', class:'btn btn-primary higher-btn'%>
             </div>
           <% end %>
         </div>
+
+
       </div>
     </div>
   </div>

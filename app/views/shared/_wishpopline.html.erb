@@ -1,0 +1,12 @@
+<li class='wish-items'>
+  <%= link_to place_wishlists_places_path(place, wishlist: wishlist.id), method: :post do%>
+    <span style='font-size:17px;'><%= wishlist.name %></span>
+    <span style='float:right'>
+      <% if wishlist.has?(place.id)%>
+        <i class='fa fa-heart'></i>
+      <% else %>
+        <i class='fa fa-heart-o'></i>
+      <% end %>
+    </span>
+  <% end %>
+</li>
