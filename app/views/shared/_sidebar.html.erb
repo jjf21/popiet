@@ -1,0 +1,21 @@
+<div class="col-sm-4 col-md-3">
+  <div class="tr-sidebar">
+    <ul class="nav nav-tabs profile-tabs section" role="tablist">
+      <li>
+        <%= link_to edit_user_registration_path do %>
+          <i class="fa fa-user" aria-hidden="true"></i>My account
+        <% end %>
+      </li>
+      <li>
+        <%= link_to wishlists_path do %>
+          <i class="fa fa-heart" aria-hidden="true"></i>My wishlists
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>Log out
+        <% end %>
+      </li>
+    </ul>               
+  </div><!-- /.tr-sidebar -->           
+</div>

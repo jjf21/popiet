@@ -1,0 +1,7 @@
+.profile-tabs>li i {
+  color: $blue;
+}
+
+.profile-tabs>li>a:hover, .profile-tabs>li>a:focus, .profile-tabs>li.active>a, .profile-tabs>li.active>a:focus, .profile-tabs>li.active>a:hover{
+  color:$blue;
+}
