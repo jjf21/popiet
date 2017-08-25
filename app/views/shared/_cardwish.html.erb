@@ -1,5 +1,5 @@
 <figure class="snip0051">
-  <%= link_to '', place_wishlists_place_path(place, wishlist.wishlists_places.first), class:'fa fa-times icon-wishlist', method: :delete %>
+  <%= link_to '', place_wishlists_place_path(place, wishlist.wishlists_places.find_by_place_id(place.id)), class:'fa fa-times icon-wishlist', method: :delete %>
   <div class='div-img' style='height:190px; background: url(<%= image_path place.photo %>); background-size: cover;'>
   </div>
   <%= render 'shared/wishpop', place: place %>
