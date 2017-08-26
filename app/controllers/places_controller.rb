@@ -39,6 +39,19 @@ class PlacesController < ApplicationController
     @wishlist = Wishlist.new
     @place = Place.find(params[:id])
     authorize @place
+
+    url = "https://api.darksky.net/forecast/#{ENV['FORECAST_API_KEY']}/#{@place.latitude},#{@place.longitude}" 
+    data = JSON.parse(RestClient.get(url))
+
+
+    if data['currently']
+      data = data['currently']
+      @place.w_summary = data['summary']
+      @place.w_temp = data['temperature'] - 32
+      @place.w_wind =data['windSpeed']
+      @place.w_cloud_cover = data['cloudCover']
+    end
+
     @review = Review.new
     @reviews = @place.reviews
 

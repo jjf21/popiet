@@ -1,4 +1,5 @@
 class Place < ApplicationRecord
+  attr_accessor :w_summary, :w_temp, :w_wind, :w_cloud_cover
   has_many :monthly_ratings
   has_many :reviews, dependent: :destroy
   has_many :wishlists_places

@@ -23,28 +23,24 @@
           <%= render 'shared/review', review: review %>
         <% end %>
       <% else %>
-        <p> Aucun avis pour le moment </p>
+        <p> No review of the spot </p>
       <% end %>
       <%= render 'shared/reviewpop', place: @place %>
     </div>
   </div>
 
-  <!-- METEO -->
   <div class='row'>
     <div class='box' id='forecast'>
-      <div class='box-title'>Best Period</div>
-      <!-- style -->
-      <div id="chart">
-        <ul id="bars">
-          <% @place.monthly_ratings.each do |rating| %> 
-            <li>
-              <div data-percentage="<%= rating.rating %>" class="bar"></div><span><%= Date::MONTHNAMES[rating.month_number.to_i] %></span>
-            </li>
-          <% end %>
-        </ul>
+      <div class='box-title'>Wind statistc</div>
+      
+      <div class='row'>
+        <div class='col-sm-12 col-md-7'>
+          <%= render 'shared/iframestat' %>
+        </div>
+        <div class='col-sm-12 col-md-5'>
+          <%= render 'shared/currentweather', place: @place %>
+        </div>
       </div>
-    <!-- style -->
-
     </div>
   </div>
 </div>
