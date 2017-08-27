@@ -29,6 +29,7 @@
       <% @places.each do |place| %>
         <%= render 'shared/cardindex', place: place %>
       <% end %>
+      <%= paginate @places %>
     </div>
     <div class='col-md-6 col-xs-12'>
       <div class='sticky-content' style='margin-top:35px;'>

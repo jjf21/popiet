@@ -11,6 +11,7 @@ gem 'redis'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'rest-client'
+gem 'kaminari'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
