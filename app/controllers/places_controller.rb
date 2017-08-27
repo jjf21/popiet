@@ -49,7 +49,7 @@ class PlacesController < ApplicationController
       @place.w_summary = data['summary']
       @place.w_icon = data['icon']
       @place.w_temp = data['temperature'].round - 32
-      @place.w_wind =data['windSpeed']
+      @place.w_wind = (data['windSpeed'] * 1.94384).round
       @place.w_cloud_cover = data['cloudCover']
     else # si on ne recupère rien
       @place.w_summary = 0
