@@ -3,6 +3,7 @@ class Place < ApplicationRecord
   has_many :monthly_ratings
   has_many :reviews, dependent: :destroy
   has_many :wishlists_places
+  mount_uploader :photo, PhotoUploader
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
