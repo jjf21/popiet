@@ -20,6 +20,7 @@
           <% if @place.windfinder_stat %>
             <%= render 'shared/iframestat', place: @place %>
           <% else %>
+            <p><i style='font-size:20vh; margin-top: 15vh;'class='wi wi-tsunami'></i><p>
             <p>Sorry, we don't have any stats yet</p>
           <% end %>
         </div>
