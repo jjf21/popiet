@@ -1,0 +1,49 @@
+.weather-icon{
+  height:30px;
+}
+
+.weather-item{
+  border-right:1px solid lightgrey;
+}
+.weather-item:last-child{
+  border:none;
+}
+
+#Capa_1 > g:nth-child(1) > g > path:nth-child(1){
+  fill: $blue;
+}
+
+#Capa_1 > g:nth-child(1) > g > path:nth-child(2){
+  fill: $blue;
+}
+
+#Capa_1 > g:nth-child(1) > g > g:nth-child(1){
+  fill:$blue;
+}
+
+#Capa_1 > g:nth-child(1) > g > g:nth-child(2){
+  fill:$blue;
+}
+
+.icon-weather{
+  font-size:100px;
+  color:$blue;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  text-align:right;
+  margin-left: 30px
+}
+
+.text-weather{
+  text-align: left;
+  margin-top: 50px;
+  height: 100px;
+  font-size: 30px;
+  color: $gray;
+}
+
+.cloud-icon{
+  font-size: 30px;
+  margin-top: 5px;
+  color: $blue;
+}
