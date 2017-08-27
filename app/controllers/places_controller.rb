@@ -28,6 +28,9 @@ class PlacesController < ApplicationController
     if !start_month.blank? || !end_month.blank? 
       @places = @places.sort_by {|place| place.stat_avg_score(start_month.to_i, end_month.to_i) }.reverse
     end
+
+    @places = Kaminari.paginate_array(@places).page(params[:page]).per(10)
+
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
