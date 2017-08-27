@@ -15,16 +15,13 @@ puts 'Seeding your app'
 
 ########### PLACE 1 ##############
 
-csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-filepath    = 'EUROPE.csv'
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'EUROPE.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+
 
 def google_details(city)   
   # City -> Place Id
   url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?sensor=true&language=en&type=(cities)&input=#{city}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
-  return false if  data['predictions'].first['place_id'] == nil
+  return false if  data['predictions'].empty?
   place_id = data['predictions'].first['place_id'] 
 
   #Place id -> Photo Reference
@@ -42,43 +39,60 @@ def google_details(city)
   }
 end
 
+def seed_from_csv(filename, sample)
+  csv_text = File.read(Rails.root.join('lib', 'seeds', "#{filename}.csv"))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 
-
-csv.first(5).each do |row|
-  google_details = google_details(row['city'])
-  if google_details != false
-    if row['lat'] == '' || row['lng'] == ''
-      row['lat'] = google_details[:lat]
-      row['lng'] = google_details[:lng]
-    end
-
+  csv.first(sample).each do |row|
     if row['state'] == 'true'
+      google_details = google_details(row['city'])
 
-      place = Place.create!(
-                  city: row['city'],
-                  country: row['country'],
-                  name: row['name'],
-                  latitude:  row['lat'] ,
-                  longitude:  row['lng'],
-                  description: row['description'],
-                  remote_photo_url: google_details[:photo_url],
-                  windfinder_stat: row['wndfinder_link']
+      if google_details != false
+
+        if row['lat'] == '' || row['lng'] == ''
+          row['lat'] = google_details[:lat]
+          row['lng'] = google_details[:lng]
+        end
+
+        place = Place.create!(
+                    city: row['city'],
+                    country: row['country'],
+                    name: row['name'],
+                    latitude:  row['lat'] ,
+                    longitude:  row['lng'],
+                    description: row['description'],
+                    remote_photo_url: google_details[:photo_url],
+                    windfinder_stat: row['wndfinder_link']
+                    )
+
+        statistics = eval(row['stat[]'])
+        statistics.each do |stat|
+          MonthlyRating.create!(
+                  month_number: stat[:month],
+                  rating: stat[:stat],
+                  place: place
                   )
-
-      statistics = eval(row['stat[]'])
-      statistics.each do |stat|
-        MonthlyRating.create!(
-                month_number: stat[:month],
-                rating: stat[:stat],
-                place: place
-                )
+        end
       end
     end
   end
 end
-
 ##################################
 
+seed_from_csv('CARIBEAN', 3)
+puts 'Caribe OK'
+seed_from_csv('AUSTRALIA', 3)
+puts 'australia OK'
+seed_from_csv('CENTRALAMERICA', 3)
+puts 'central america OK'
+seed_from_csv('MIDDLEEAST', 3)
+puts 'middle east OK'
+seed_from_csv('NORTHAMERICA', 3)
+puts 'north america OK'
+seed_from_csv('OCEANIA', 3)
+puts 'oceania OK'
+seed_from_csv('SOUTHAMERICA', 3)
+puts 'south america OK'
 
 
 User.create!(
