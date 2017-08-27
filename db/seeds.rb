@@ -62,7 +62,7 @@ csv.first(5).each do |row|
                   longitude:  row['lng'],
                   description: row['description'],
                   remote_photo_url: google_details[:photo_url],
-                  windfinder_stat: row['windfinder_link']
+                  windfinder_stat: row['wndfinder_link']
                   )
 
       statistics = eval(row['stat[]'])

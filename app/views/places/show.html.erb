@@ -17,7 +17,11 @@
       
       <div class='row'>
         <div class='col-sm-12 col-md-7'>
-          <%= render 'shared/iframestat' %>
+          <% if @place.windfinder_stat %>
+            <%= render 'shared/iframestat', place: @place %>
+          <% else %>
+            <p>Sorry, we don't have any stats yet</p>
+          <% end %>
         </div>
         <div class='col-sm-12 col-md-5'>
           <%= render 'shared/currentweather', place: @place %>
