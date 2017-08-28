@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      marker.infowindow render_to_string(partial: "places/place_infos", locals: {place: place })
     end
   end
 
@@ -29,7 +29,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     authorize @place
 
-    url = "https://api.darksky.net/forecast/#{ENV['FORECAST_API_KEY']}/#{@place.latitude},#{@place.longitude}" 
+    url = "https://api.darksky.net/forecast/#{ENV['FORECAST_API_KEY']}/#{@place.latitude},#{@place.longitude}"
     data = JSON.parse(RestClient.get(url))
 
 
