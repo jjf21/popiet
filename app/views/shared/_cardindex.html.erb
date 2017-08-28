@@ -4,6 +4,13 @@
   </div>
   <%= render 'shared/wishpop', place: place %>
   <figcaption>
+      <% if place.stat_avg_score(@start_month, @end_month) > 0 %>
+    <div class='stars-card'>
+      <% 5.times do |i|  %>
+        <%= place.stat_avg_score(@start_month, @end_month) - (20*i) > 0 ? '<i class="fa fa-star" aria-hidden="true"></i>'.html_safe : '<i class="fa fa-star-o" aria-hidden="true"></i>'.html_safe %>
+      <%end %>
+    </div>
+  <% end %>
     <h2><%= place.name %></h2> 
     <p><%= place.description.first(70) + '... ' %><%= link_to 'Read More', place_path(place)%> </p>
   </figcaption> 

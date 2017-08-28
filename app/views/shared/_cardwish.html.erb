@@ -4,8 +4,8 @@
   </div>
   <%= render 'shared/wishpop', place: place %>
   <figcaption style='border: 1px solid rgba(29, 190, 207, 0.1);'>
-    <h2 style='bottom:70%'><%= place.name %></h2> 
-    <p style='top:30%'><%= place.description.first(50) + '... ' %><%= link_to '<br>Read More'.html_safe, place_path(place)%> </p>
+    <h2><%= place.name %></h2> 
+    <p ><%= place.description.first(50) + '... ' %><%= link_to '<br>Read More'.html_safe, place_path(place)%> </p>
   </figcaption> 
 </figure>
 

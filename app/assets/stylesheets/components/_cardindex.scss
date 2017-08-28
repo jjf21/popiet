@@ -4,6 +4,7 @@
   right: 10px;
   z-index: 1;
   color: $blue;
+  cursor: pointer;
 }
 
 figure.snip0051 {
@@ -67,4 +68,10 @@ figure.snip0051:hover > .div-img,
 figure.snip0051.hover > .div-img {
 
   transform: scale(1.1);
+}
+
+.stars-card{
+  color: $blue;
+  padding-top:10px;
+  padding-left:10px;
 }

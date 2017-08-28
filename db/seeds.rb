@@ -47,7 +47,7 @@ def seed_from_csv(filename, sample)
     if row['state'] == 'true'
       google_details = google_details(row['city'])
 
-      if google_details != false
+      if google_details != false && row['description'] != ''
 
         if row['lat'] == '' || row['lng'] == ''
           row['lat'] = google_details[:lat]
@@ -79,19 +79,21 @@ def seed_from_csv(filename, sample)
 end
 ##################################
 
-seed_from_csv('CARIBEAN', 3)
+seed_from_csv('CARIBEAN', 100)
 puts 'Caribe OK'
-seed_from_csv('AUSTRALIA', 3)
+seed_from_csv('EUROPE', 100)
+puts 'Europe OK'
+seed_from_csv('AUSTRALIA', 100)
 puts 'australia OK'
-seed_from_csv('CENTRALAMERICA', 3)
+seed_from_csv('CENTRALAMERICA', 100)
 puts 'central america OK'
-seed_from_csv('MIDDLEEAST', 3)
+seed_from_csv('MIDDLEEAST', 100)
 puts 'middle east OK'
-seed_from_csv('NORTHAMERICA', 3)
+seed_from_csv('NORTHAMERICA', 100)
 puts 'north america OK'
-seed_from_csv('OCEANIA', 3)
+seed_from_csv('OCEANIA', 100)
 puts 'oceania OK'
-seed_from_csv('SOUTHAMERICA', 3)
+seed_from_csv('SOUTHAMERICA', 100)
 puts 'south america OK'
 
 
