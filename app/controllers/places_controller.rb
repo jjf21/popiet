@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
     if end_month.to_i < start_month.to_i
       a = start_month
       start_month = end_month
-      end_month = a 
+      end_month = a
     end
 
     @start_month = params["start_month"].to_i
@@ -20,12 +20,12 @@ class PlacesController < ApplicationController
 
     if start_month.blank? && !end_month.blank?
       start_month = end_month
-    end    
+    end
     if !start_month.blank? && end_month.blank?
       end_month = start_month
     end
-    
-    if !start_month.blank? || !end_month.blank? 
+
+    if !start_month.blank? || !end_month.blank?
       @places = @places.sort_by {|place| place.stat_avg_score(start_month.to_i, end_month.to_i) }.reverse
     end
 
@@ -34,7 +34,7 @@ class PlacesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      marker.infowindow render_to_string(partial: "places/place_infos", locals: {place: place })
     end
   end
 
@@ -43,7 +43,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     authorize @place
 
-    url = "https://api.darksky.net/forecast/#{ENV['FORECAST_API_KEY']}/#{@place.latitude},#{@place.longitude}" 
+    url = "https://api.darksky.net/forecast/#{ENV['FORECAST_API_KEY']}/#{@place.latitude},#{@place.longitude}"
     data = JSON.parse(RestClient.get(url))
 
 
