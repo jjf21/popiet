@@ -1,6 +1,10 @@
 <%= render 'shared/banner' %>
-<div class="container">
+<div class="container" style='margin-bottom: 30px;'>
   <div class="row">
+    <div class="section-title">
+      <h3>Discover new spots</h3>
+      <%= link_to 'All spots >', places_path %>
+    </div>
     <% @places.each do |place| %>
       <div class='col-md-4 col-xs-12'>
         <%= render 'shared/cardindex', place: place %>
@@ -8,5 +12,4 @@
     <% end %>
   </div>
 </div>
-<%= render 'shared/stores' %>
 <%= render 'shared/steps' %>

@@ -11,11 +11,32 @@ class Place < ApplicationRecord
   def stat_avg_score(start_month, end_month)
     score = 0
     count = 0
-    for i in start_month..end_month
-      score += self.monthly_ratings.find_by_month_number(i).rating
-      count += 1 
+    start_month = start_month.to_i
+    end_month = end_month.to_i
+
+    if end_month < start_month
+      a = start_month
+      start_month = end_month
+      end_month = a 
     end
-    score = score / count.to_f
+
+    if start_month == 0 && end_month > 0
+      start_month = end_month
+    end 
+
+    if start_month > 0 && end_month == 0
+      end_month = start_month
+    end
+
+    if start_month != 0 && end_month != 0
+      for i in start_month.to_i..end_month.to_i
+        score += self.monthly_ratings.find_by_month_number(i).rating
+        count += 1 
+      end
+      score = score / count.to_f
+    else
+      score = 0
+    end
   end
 
   def get_icon_class(icon_tag)

@@ -4,29 +4,15 @@ class PlacesController < ApplicationController
   def index
     @wishlist = Wishlist.new
     @places = policy_scope(Place)
-    @places = Place.where.not(latitude: nil, longitude: nil)
-
-    start_month = params["start_month"]
-    end_month = params["end_month"]
-
-    if end_month.to_i < start_month.to_i
-      a = start_month
-      start_month = end_month
-      end_month = a 
-    end
 
     @start_month = params["start_month"].to_i
     @end_month = params["end_month"].to_i
-
-    if start_month.blank? && !end_month.blank?
-      start_month = end_month
-    end    
-    if !start_month.blank? && end_month.blank?
-      end_month = start_month
-    end
     
-    if !start_month.blank? || !end_month.blank? 
-      @places = @places.sort_by {|place| place.stat_avg_score(start_month.to_i, end_month.to_i) }.reverse
+    @places = Place.where.not(latitude: nil, longitude: nil)
+    if @start_month == 0 && @end_month == 0 
+      @places
+    else
+      @places = @places.sort_by {|place| place.stat_avg_score(@start_month, @end_month) }.reverse
     end
 
     @places = Kaminari.paginate_array(@places).page(params[:page]).per(10)
