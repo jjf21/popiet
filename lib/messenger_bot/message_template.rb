@@ -39,7 +39,7 @@ def places_to_list_wind(places)
     if !place.description.blank?
       places_arrayed << { 
                           title: place.name, 
-                          subtitle: place.w_wind.to_s + " knt",
+                          subtitle: "Temp: #{place.w_temp} / Wind: #{place.w_wind}knt",
                           image_url: place.photo_url,
                         }
     end
