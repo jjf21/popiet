@@ -13,8 +13,8 @@
 
   <div class='row'>
     <div class='box' id='forecast'>
-      <div class='box-title'>Wind statistc</div>
-      
+      <div class='box-title'>Wind statistic</div>
+
       <div class='row'>
         <div class='col-sm-12 col-md-7'>
           <% if @place.windfinder_stat %>
@@ -31,6 +31,15 @@
     </div>
   </div>
 
+  <!-- taille matos  -->
+   <div class='row'>
+    <div class='box'>
+      <div class='box-title'>
+        Kite size
+      </div>
+      <%= render 'shared/windsize' %>
+    </div>
+  </div>
 
   <!-- REVIEW -->
   <div class='row'>
@@ -49,7 +58,7 @@
       <%= render 'shared/reviewpop', place: @place %>
     </div>
   </div>
-  
+
 </div>
 <div id="map" style="width: 100%; height: 600px;"></div>
 
@@ -58,9 +67,9 @@
     $(function() {
   $("#bars li .bar").each( function( key, bar ) {
     var percentage = $(this).data('percentage') * 20;
-    
+
     $(this).css('height', percentage + '%');
-    
+
     $(this).animate({
       'height' : percentage + '%'
     }, 1000);
