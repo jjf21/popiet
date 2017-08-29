@@ -21,12 +21,18 @@ def google_details(city)
   # City -> Place Id
   url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?sensor=true&language=en&type=(cities)&input=#{city}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
-  return false if  data['predictions'].empty?
+
+  return false if  data['predictions'].empty? || data['predictions'].nil?
   place_id = data['predictions'].first['place_id'] 
 
   #Place id -> Photo Reference
   url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
+
+  puts '#1 ***********'
+  puts '#2 ***********'
+  puts data['result']['photos'].first
+  return false if  data['result'].nil?
   photo_reference = data['result']['photos'].first['photo_reference']
   lat = data['result']['geometry']['location']['lat']
   lng = data['result']['geometry']['location']['lng']
@@ -39,15 +45,17 @@ def google_details(city)
   }
 end
 
-def seed_from_csv(filename, sample)
+def seed_from_csv(filename)
   csv_text = File.read(Rails.root.join('lib', 'seeds', "#{filename}.csv"))
   csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 
-  csv.first(sample).each do |row|
+  csv.first(3).each do |row|
     if row['state'] == 'true'
       google_details = google_details(row['city'])
+      puts row['city'] + 'TESTING'
+      puts row['description']
 
-      if google_details != false && row['description'] != ''
+      if google_details != false && row['description'].length > 1
 
         if row['lat'] == '' || row['lng'] == ''
           row['lat'] = google_details[:lat]
@@ -64,7 +72,7 @@ def seed_from_csv(filename, sample)
                     remote_photo_url: google_details[:photo_url],
                     windfinder_stat: row['wndfinder_link']
                     )
-
+        puts place[:city] + 'ADDED'
         statistics = eval(row['stat[]'])
         statistics.each do |stat|
           MonthlyRating.create!(
@@ -79,22 +87,15 @@ def seed_from_csv(filename, sample)
 end
 ##################################
 
-seed_from_csv('CARIBEAN', 100)
-puts 'Caribe OK'
-seed_from_csv('EUROPE', 100)
-puts 'Europe OK'
-seed_from_csv('AUSTRALIA', 100)
-puts 'australia OK'
-seed_from_csv('CENTRALAMERICA', 100)
-puts 'central america OK'
-seed_from_csv('MIDDLEEAST', 100)
-puts 'middle east OK'
-seed_from_csv('NORTHAMERICA', 100)
-puts 'north america OK'
-seed_from_csv('OCEANIA', 100)
-puts 'oceania OK'
-seed_from_csv('SOUTHAMERICA', 100)
-puts 'south america OK'
+seed_from_csv('CARIBEAN')
+# seed_from_csv('EUROPE')
+# seed_from_csv('AUSTRALIA')
+# seed_from_csv('CENTRALAMERICA')
+# seed_from_csv('MIDDLEEAST')
+# seed_from_csv('NORTHAMERICA')
+# seed_from_csv('OCEANIA')
+# seed_from_csv('SOUTHAMERICA')
+
 
 
 User.create!(
