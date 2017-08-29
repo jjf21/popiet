@@ -88,11 +88,11 @@ end
 
 
 # seed_from_csv('CARIBEAN')
-seed_from_csv('EUROPE')
-seed_from_csv('AUSTRALIA')
-seed_from_csv('CENTRALAMERICA')
-seed_from_csv('MIDDLEEAST')
-seed_from_csv('NORTHAMERICA')
+# seed_from_csv('EUROPE')
+# seed_from_csv('AUSTRALIA')
+# seed_from_csv('CENTRALAMERICA')
+# seed_from_csv('MIDDLEEAST')
+# seed_from_csv('NORTHAMERICA')
 seed_from_csv('OCEANIA')
 seed_from_csv('SOUTHAMERICA')
 
