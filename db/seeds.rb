@@ -2,10 +2,10 @@ require 'csv'
 puts 'Erasing all the DB'
 
 Review.destroy_all
-MonthlyRating.destroy_all
+# MonthlyRating.destroy_all
 WishlistsPlace.destroy_all
 Wishlist.destroy_all
-Place.destroy_all
+# Place.destroy_all
 User.destroy_all
 
 
@@ -29,7 +29,7 @@ def google_details(city)
   url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
 
-  return false if  data['result'].nil?
+  return false if  data["status"] != "OK"
   photo_reference = data['result']['photos'].first['photo_reference']
   lat = data['result']['geometry']['location']['lat']
   lng = data['result']['geometry']['location']['lng']
