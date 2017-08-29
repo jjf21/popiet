@@ -46,7 +46,7 @@ def seed_from_csv(filename)
   csv_text = File.read(Rails.root.join('lib', 'seeds', "#{filename}.csv"))
   csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 
-  csv.first(3).each do |row|
+  csv.each do |row|
     if row['state'] == 'true' && row['description'].length > 1
       google_details = google_details(row['city'])
 
