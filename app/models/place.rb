@@ -49,4 +49,27 @@ class Place < ApplicationRecord
     icon_class = 'clear-day' if icon_class == ''
     return icon_class
   end
+
+  def place_with_data
+
+    place = self
+    url = "https://api.darksky.net/forecast/#{ENV['FORECAST_API_KEY']}/#{place.latitude},#{place.longitude}" 
+    data = JSON.parse(RestClient.get(url))
+
+    if data['currently']
+      data = data['currently']
+      place.w_summary = data['summary']
+      place.w_icon = data['icon']
+      place.w_temp = (data['temperature'] - 47).round
+      place.w_wind = (data['windSpeed'] * 1.94384).round
+      place.w_cloud_cover = data['cloudCover']
+    else # si on ne recupère rien
+      place.w_summary = 0
+      place.w_temp = 0
+      place.w_wind = 0
+      place.w_cloud_cover = 0
+      place.w_icon = ''
+    end
+    place
+  end
 end

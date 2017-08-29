@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :wishlists, only: [:index, :new, :create, :destroy]
 
+  get 'messengerbot/webhook', to: 'facebook_messenger_bot#chalenge'
+  post 'messengerbot/webhook', to: 'facebook_messenger_bot#webhook'
+
+
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
