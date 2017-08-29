@@ -1,4 +1,5 @@
 require 'csv'
+
 puts 'Erasing all the DB'
 
 Review.destroy_all
@@ -29,7 +30,8 @@ def google_details(city)
   url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
 
-  return false if  data["status"] != "OK"
+  return false if  data["status"] != "OK" || data['result']['photos'].nil?
+  
   photo_reference = data['result']['photos'].first['photo_reference']
   lat = data['result']['geometry']['location']['lat']
   lng = data['result']['geometry']['location']['lng']
@@ -48,6 +50,9 @@ def seed_from_csv(filename)
   csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
   csv.each do |row|
     if row['state'] == 'true' && row['description'].length > 1 && row['city'].ascii_only?
+      puts '*****************'
+      puts row['city']
+      puts '*****************'
       google_details = google_details(row['city'])
 
       if google_details != false 
