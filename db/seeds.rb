@@ -43,11 +43,11 @@ def google_details(city)
 end
 
 def seed_from_csv(filename)
+
   csv_text = File.read(Rails.root.join('lib', 'seeds', "#{filename}.csv"))
   csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-
   csv.each do |row|
-    if row['state'] == 'true' && row['description'].length > 1
+    if row['state'] == 'true' && row['description'].length > 1 && row['city'].ascii_only?
       google_details = google_details(row['city'])
 
       if google_details != false 
@@ -80,9 +80,9 @@ def seed_from_csv(filename)
     end
   end
 end
-##################################
 
-seed_from_csv('CARIBEAN')
+
+# seed_from_csv('CARIBEAN')
 seed_from_csv('EUROPE')
 seed_from_csv('AUSTRALIA')
 seed_from_csv('CENTRALAMERICA')
