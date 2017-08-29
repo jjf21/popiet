@@ -1,4 +1,4 @@
-URL = 'https://9554a743.ngrok.io/'
+URL = 'https://kiteadvisor.herokuapp.com/'
  
 def places_to_list(places)
   places_arrayed = []
