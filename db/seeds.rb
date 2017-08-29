@@ -29,9 +29,6 @@ def google_details(city)
   url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
 
-  puts '#1 ***********'
-  puts '#2 ***********'
-  puts data['result']['photos'].first
   return false if  data['result'].nil?
   photo_reference = data['result']['photos'].first['photo_reference']
   lat = data['result']['geometry']['location']['lat']
@@ -50,14 +47,12 @@ def seed_from_csv(filename)
   csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 
   csv.first(3).each do |row|
-    if row['state'] == 'true'
+    if row['state'] == 'true' && row['description'].length > 1
       google_details = google_details(row['city'])
-      puts row['city'] + 'TESTING'
-      puts row['description']
 
-      if google_details != false && row['description'].length > 1
+      if google_details != false 
 
-        if row['lat'] == '' || row['lng'] == ''
+        if row['lat'] == '' || row['lng']
           row['lat'] = google_details[:lat]
           row['lng'] = google_details[:lng]
         end
@@ -88,13 +83,13 @@ end
 ##################################
 
 seed_from_csv('CARIBEAN')
-# seed_from_csv('EUROPE')
-# seed_from_csv('AUSTRALIA')
-# seed_from_csv('CENTRALAMERICA')
-# seed_from_csv('MIDDLEEAST')
-# seed_from_csv('NORTHAMERICA')
-# seed_from_csv('OCEANIA')
-# seed_from_csv('SOUTHAMERICA')
+seed_from_csv('EUROPE')
+seed_from_csv('AUSTRALIA')
+seed_from_csv('CENTRALAMERICA')
+seed_from_csv('MIDDLEEAST')
+seed_from_csv('NORTHAMERICA')
+seed_from_csv('OCEANIA')
+seed_from_csv('SOUTHAMERICA')
 
 
 
