@@ -1,11 +1,12 @@
 require 'csv'
+
 puts 'Erasing all the DB'
 
 Review.destroy_all
-MonthlyRating.destroy_all
+# MonthlyRating.destroy_all
 WishlistsPlace.destroy_all
 Wishlist.destroy_all
-Place.destroy_all
+# Place.destroy_all
 User.destroy_all
 
 
@@ -21,12 +22,16 @@ def google_details(city)
   # City -> Place Id
   url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?sensor=true&language=en&type=(cities)&input=#{city}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
-  return false if  data['predictions'].empty?
+
+  return false if  data['predictions'].empty? || data['predictions'].nil?
   place_id = data['predictions'].first['place_id'] 
 
   #Place id -> Photo Reference
   url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=#{ENV['GOOGLE_MAP_API']}"
   data = JSON.parse(RestClient.get(url))
+
+  return false if  data["status"] != "OK" || data['result']['photos'].nil?
+  
   photo_reference = data['result']['photos'].first['photo_reference']
   lat = data['result']['geometry']['location']['lat']
   lng = data['result']['geometry']['location']['lng']
@@ -39,17 +44,20 @@ def google_details(city)
   }
 end
 
-def seed_from_csv(filename, sample)
+def seed_from_csv(filename)
+
   csv_text = File.read(Rails.root.join('lib', 'seeds', "#{filename}.csv"))
   csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-
-  csv.first(sample).each do |row|
-    if row['state'] == 'true'
+  csv.each do |row|
+    if row['state'] == 'true' && row['description'].length > 1 && row['city'].ascii_only?
+      puts '*****************'
+      puts row['city']
+      puts '*****************'
       google_details = google_details(row['city'])
 
-      if google_details != false
+      if google_details != false 
 
-        if row['lat'] == '' || row['lng'] == ''
+        if row['lat'] == '' || row['lng']
           row['lat'] = google_details[:lat]
           row['lng'] = google_details[:lng]
         end
@@ -64,7 +72,7 @@ def seed_from_csv(filename, sample)
                     remote_photo_url: google_details[:photo_url],
                     windfinder_stat: row['wndfinder_link']
                     )
-
+        puts place[:city] + 'ADDED'
         statistics = eval(row['stat[]'])
         statistics.each do |stat|
           MonthlyRating.create!(
@@ -77,22 +85,17 @@ def seed_from_csv(filename, sample)
     end
   end
 end
-##################################
 
-seed_from_csv('CARIBEAN', 3)
-puts 'Caribe OK'
-seed_from_csv('AUSTRALIA', 3)
-puts 'australia OK'
-seed_from_csv('CENTRALAMERICA', 3)
-puts 'central america OK'
-seed_from_csv('MIDDLEEAST', 3)
-puts 'middle east OK'
-seed_from_csv('NORTHAMERICA', 3)
-puts 'north america OK'
-seed_from_csv('OCEANIA', 3)
-puts 'oceania OK'
-seed_from_csv('SOUTHAMERICA', 3)
-puts 'south america OK'
+
+# seed_from_csv('CARIBEAN')
+# seed_from_csv('EUROPE')
+# seed_from_csv('AUSTRALIA')
+# seed_from_csv('CENTRALAMERICA')
+# seed_from_csv('MIDDLEEAST')
+# seed_from_csv('NORTHAMERICA')
+seed_from_csv('OCEANIA')
+seed_from_csv('SOUTHAMERICA')
+
 
 
 User.create!(

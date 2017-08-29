@@ -1,0 +1,6 @@
+<div class="content">
+  <h1 class="title"><%= link_to place.name.capitalize, place_path(place) %></h1>
+  <p class="text"><%= place.description.first(105) %>
+  <%= "..." if place.description.length > 105 %></p>
+  <%= link_to 'Open Spot', place_path(place), class:'button' %>
+</div>
