@@ -76,7 +76,7 @@ class HandleBotMessaging
     if attachments.first['payload']["coordinates"]
       lat = attachments.first['payload']["coordinates"]['lat'].to_f
       lng = attachments.first['payload']["coordinates"]['lng'].to_f
-      places = Place.near([lat, lng], 100)
+      places = Place.near([lat, lng], 70)
       if !places.empty?
         windy_places = []
         MessengerBot.new.send_message_text(sender_id, "I'm looking for a windy place next to you:")

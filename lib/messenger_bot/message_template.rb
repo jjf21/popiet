@@ -27,7 +27,7 @@ def places_to_list(places)
       payload: {
         template_type: "list",
         top_element_style: "compact",
-        elements: places_arrayed.first(3)
+        elements: places_arrayed.first(4)
       }
     }
   }
@@ -60,7 +60,7 @@ def places_to_list_wind(places)
       payload: {
         template_type: "list",
         top_element_style: "compact",
-        elements: places_arrayed.first(3)
+        elements: places_arrayed.first(4)
       }
     }
   }
