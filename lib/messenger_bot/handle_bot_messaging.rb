@@ -19,6 +19,7 @@ class HandleBotMessaging
       f_name = MessengerBot.new.get_user_informations(sender_id)['first_name']
       message = begining_replies(f_name)
       MessengerBot.new.send_message(sender_id, message)
+      answered = true
 
     when 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
       # Ask for a trip on particular month
@@ -75,7 +76,7 @@ class HandleBotMessaging
     if attachments.first['payload']["coordinates"]
       lat = attachments.first['payload']["coordinates"]['lat'].to_f
       lng = attachments.first['payload']["coordinates"]['lng'].to_f
-      places = Place.near([lat, lng], 100)
+      places = Place.near([lat, lng], 70)
       if !places.empty?
         windy_places = []
         MessengerBot.new.send_message_text(sender_id, "I'm looking for a windy place next to you:")

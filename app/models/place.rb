@@ -60,7 +60,7 @@ class Place < ApplicationRecord
       data = data['currently']
       place.w_summary = data['summary']
       place.w_icon = data['icon']
-      place.w_temp = (data['temperature'] - 54).round
+      place.w_temp = (data['temperature'] - 50).round
       place.w_wind = ((data['windSpeed'] * 1.94384) - 5).round
       place.w_cloud_cover = data['cloudCover']
     else # si on ne recupère rien
