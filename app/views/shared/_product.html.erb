@@ -5,14 +5,11 @@
     <h4><%= product.title %></h4>
     
       <hr class="line">
-      <div class="row">
-        <div class="col-md-6 col-sm-6">
-          <p class="price"><%= product.price %> €</p>
-        </div>
-        <div class="col-md-6 col-sm-6">
+      <div class="row details-product">
+        <p class="price pull-left"><%= product.price %> €</p>
         <a href="<%= product.product_link %>" target="_blank" >  
-         <button class="btn btn-primary right" > BUY ITEM</button></a>
-        </div>
+         <button class="btn btn-primary pull-right" > BUY ITEM</button>
+        </a>
       </div>
     </div>
   </span>

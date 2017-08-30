@@ -10,12 +10,14 @@ def page
   doc.search('.product-block').each do |bloc|
     # itération sur toutes les divs qui ont la class ??? CSSCLASS -> a toi de trouver
     pd = product_details(bloc)
-    Product.create!(
-      title:pd[:title],
-      price:pd[:price].to_i,
-      image_link:pd[:image].gsub('small', 'home'),
-      product_link:pd[:link]
-      )
+    if pd[:price].to_i > 100
+      Product.create!(
+        title:pd[:title],
+        price:pd[:price].gsub(' ', '').to_i,
+        image_link:pd[:image].gsub('small', 'home'),
+        product_link:pd[:link]
+        )
+    end
   end
 end
 def product_details(product_bloc)
