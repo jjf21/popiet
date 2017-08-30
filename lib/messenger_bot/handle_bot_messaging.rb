@@ -15,6 +15,11 @@ class HandleBotMessaging
       MessengerBot.new.send_message_text(sender_id, message)
       answered = true
 
+    when 'hello', 'bonjour', 'salut', 'yo', 'hey'
+      f_name = MessengerBot.new.get_user_informations(sender_id)['first_name']
+      message = begining_replies(f_name)
+      MessengerBot.new.send_message(sender_id, message)
+
     when 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
       # Ask for a trip on particular month
       MessengerBot.new.send_message_text(sender_id, "In #{text.downcase}, the bests spots are:")
