@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   def home
     @places = Place.last(6)
     @wishlist = Wishlist.new
+    @products = Product.first(4)
   end
 end
