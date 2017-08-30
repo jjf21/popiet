@@ -41,6 +41,14 @@ def places_to_list_wind(places)
                           title: place.name, 
                           subtitle: "Temp: #{place.w_temp} / Wind: #{place.w_wind}knt",
                           image_url: place.photo_url,
+                          buttons: [
+                            {
+                              title: "View",
+                              type: "web_url",
+                              url: URL + '/places/' + place.id.to_s,
+                              webview_height_ratio: "tall"           
+                            }
+                          ]
                         }
     end
   end
