@@ -17,7 +17,7 @@ class HandleBotMessaging
 
     when 'hello', 'bonjour', 'salut', 'yo', 'hey'
       f_name = MessengerBot.new.get_user_informations(sender_id)['first_name']
-      message = begining_replies(f_name)
+      message = begining_replies(f_name, text)
       MessengerBot.new.send_message(sender_id, message)
       answered = true
 
@@ -37,7 +37,7 @@ class HandleBotMessaging
       answered = true
 
     when 'again'
-      message = begining_replies('')
+      message = begining_replies('', false)
       MessengerBot.new.send_message(sender_id, message)
       answered = true
 
@@ -60,7 +60,7 @@ class HandleBotMessaging
     case payload
     when 'GET_STARTED_PAYLOAD'
       f_name = MessengerBot.new.get_user_informations(sender_id)['first_name']
-      message = begining_replies(f_name)
+      message = begining_replies(f_name, false)
       MessengerBot.new.send_message(sender_id, message)
     end
   end
