@@ -9,7 +9,7 @@
     <p><%= review.content %></p>
   </div>
   <div class="message-status">
-    <p class="price">
+    <p class="etoile">
       <% 5.times do |i|  %>
         <%= review.rating - (i) > 0 ? '<i class="fa fa-star" aria-hidden="true"></i>'.html_safe : '<i class="fa fa-star-o" aria-hidden="true"></i>'.html_safe %>
       <%end %>
