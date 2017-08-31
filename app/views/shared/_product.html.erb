@@ -9,7 +9,7 @@
         <p class="price pull-left"><%= product.price %> €</p>  
         <%= form_tag orders_path do %>
           <%= hidden_field_tag 'product_id', product.id %>
-          <%= submit_tag 'BUY ITEM', class: 'btn btn-primary pull-right' %>
+          <%= submit_tag 'BUY ITEM', class: 'btn btn-primary btn-special pull-right' %>
         <% end %>
       </div>
     </div>

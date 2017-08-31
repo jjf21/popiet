@@ -1,0 +1,50 @@
+.details-prod{
+  background: $blue;
+  text-align: center;
+  padding: 30px;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: white;
+}
+
+.produc{
+  background:white; 
+  text-align: center;
+  border-radius: 4px;
+  margin: 30px 40px;
+}
+
+.stripe-button-el{
+  background: $blue !important;
+  border: 1px solid white !important;
+  border-radius: 50px !important;
+  box-shadow: none !important;
+}
+
+.stripe-button-el span {
+  background:none !important;
+  color: white !important;
+  font-family: inherit !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  font-weight: lighter !important;
+
+}
+
+.stripe-button-el:hover{
+  background: white !important;
+  border: 1px solid white !important;
+  border-radius: 50px !important;
+  box-shadow: none !important;
+}
+
+.stripe-button-el span:hover{
+  background:none !important;
+  color: $blue !important;
+  font-family: inherit !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  font-weight: lighter !important;
+
+}
