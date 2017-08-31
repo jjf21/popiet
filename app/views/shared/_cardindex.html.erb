@@ -11,8 +11,10 @@
       <%end %>
     </div>
   <% end %>
-    <h2><%= place.name %></h2> 
-    <p><%= place.description.first(70) + '... ' %><%= link_to 'Read More', place_path(place)%> </p>
+
+      <h2><%= place.name %></h2>
+      
+    <p><i class="fa fa-map-marker" aria-hidden="true"></i> <i><%= place.city %></i>, <b><%= place.country %></b><br><%= place.description.first(70) + '... ' %><%= link_to 'Read More', place_path(place)%> </p>
   </figcaption> 
 </figure>
 
