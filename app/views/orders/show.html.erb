@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class='col-xs-4'>
-      <%= image_tag 'homer.png', class:'image-homer'%>
+    <div class=' col-md-3 text-center'>
+      &nbsp;
     </div>
-    <div class='col-xs-6'>
-      <h2>Thanks for your purchase! See you on the water...</h2>
-      <ul>
+    <div class='col-xs-12 col-md-6 text-center' style='margin-top:30px;'>
+      <%= image_tag 'homer.png', class:'image-homer' %>
+      <h2>Thanks for your purchase!</h2>
+      <h4>See you on the water...</h4>
+      <ul style='list-style: none;margin-top: 30px; margin-bottom: 30px;padding: 0;'>
         <li>Status: <span class="label label-success"><%= @order.state %></span></li>
         <li>Item: <%= @order.product_id %></li>
         <li>Amount: <%= @order.amount %>.00 €</li>
