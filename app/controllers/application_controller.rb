@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def default_url_options
+  { host: ENV["HOST"] || "http://www.kiteadvisor.top/" }
+end
+
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # def user_not_authorized
