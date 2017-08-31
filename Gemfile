@@ -24,9 +24,12 @@ gem 'uglifier'
 gem 'pundit'
 gem 'omniauth-facebook'
 gem "geocoder"
+gem 'stripe'
 
 gem "coffee-rails"
 gem "gmaps4rails"
+
+gem 'stripe'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

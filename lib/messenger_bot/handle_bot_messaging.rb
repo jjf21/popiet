@@ -15,6 +15,12 @@ class HandleBotMessaging
       MessengerBot.new.send_message_text(sender_id, message)
       answered = true
 
+    when 'hello', 'bonjour', 'salut', 'yo', 'hey'
+      f_name = MessengerBot.new.get_user_informations(sender_id)['first_name']
+      message = begining_replies(f_name, text)
+      MessengerBot.new.send_message(sender_id, message)
+      answered = true
+
     when 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'
       # Ask for a trip on particular month
       MessengerBot.new.send_message_text(sender_id, "In #{text.downcase}, the bests spots are:")
@@ -31,7 +37,7 @@ class HandleBotMessaging
       answered = true
 
     when 'again'
-      message = begining_replies('')
+      message = begining_replies('', false)
       MessengerBot.new.send_message(sender_id, message)
       answered = true
 
@@ -54,7 +60,7 @@ class HandleBotMessaging
     case payload
     when 'GET_STARTED_PAYLOAD'
       f_name = MessengerBot.new.get_user_informations(sender_id)['first_name']
-      message = begining_replies(f_name)
+      message = begining_replies(f_name, false)
       MessengerBot.new.send_message(sender_id, message)
     end
   end
@@ -70,7 +76,7 @@ class HandleBotMessaging
     if attachments.first['payload']["coordinates"]
       lat = attachments.first['payload']["coordinates"]['lat'].to_f
       lng = attachments.first['payload']["coordinates"]['lng'].to_f
-      places = Place.near([lat, lng], 100)
+      places = Place.near([lat, lng], 70)
       if !places.empty?
         windy_places = []
         MessengerBot.new.send_message_text(sender_id, "I'm looking for a windy place next to you:")

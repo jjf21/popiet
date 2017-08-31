@@ -1,0 +1,10 @@
+<div class='container'>
+  <div class='row'>
+    <div class="section-title">
+      <h3>Discover our little shop</h3>
+    </div>
+    <% @products.each do |product| %>
+      <%= render 'shared/product', product: product %>
+    <% end %>
+  </div>
+</div>

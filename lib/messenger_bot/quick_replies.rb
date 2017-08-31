@@ -1,8 +1,10 @@
-def begining_replies(name)
+def begining_replies(name, message)
   if name == ''
     text = "What are you looking for?"
   else
-    text = "Hey #{name}! What are you looking for?"
+    if message
+      text = "#{message.capitalize} #{name}! What are you looking for?"
+    end
   end
   {
     text: text,
