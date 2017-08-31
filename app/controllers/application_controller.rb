@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
   after_action :store_location
-  
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get?
@@ -21,10 +21,14 @@ class ApplicationController < ActionController::Base
       session[:previous_url] = request.fullpath
     end
   end
-  
+
   def after_sign_in_path_for(resource)
     session[:previous_url] || root_path
   end
+
+  def default_url_options
+  { host: ENV["HOST"] || "http://www.kiteadvisor.top/" }
+end
 
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
