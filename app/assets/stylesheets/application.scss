@@ -13,3 +13,20 @@
 @import "layouts/index";
 @import "pages/index";
 @import "components/index";
+
+/* For fixing footer in the bottom of the page */
+/* Even if the content if not enough */
+html, body {
+  height: 100%;
+  margin: 0; padding: 0;
+}
+body {
+  display : table;
+  width: 100%;
+}
+
+footer {
+  display : table-row;
+  height: 70px;
+}
+/** -- */
