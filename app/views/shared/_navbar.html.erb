@@ -7,8 +7,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <%= link_to "All Spots", places_path , class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= render 'shared/messenger' %>
+
     <% if user_signed_in? %>
       <!-- Links when logged in -->
 
@@ -45,6 +44,7 @@
           </ul>
         </div>
       </div>
+        <%= render 'shared/messenger' %>
     <% else %>
       <!-- Login link (when logged out) -->
 
@@ -52,6 +52,8 @@
        <%= link_to "All Spots", places_path , class: "navbar-wagon-item navbar-wagon-link" %>
 
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <%= render 'shared/messenger' %>
     <% end %>
   </div>
 
