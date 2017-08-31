@@ -58,7 +58,7 @@ $header-colors: $header-color1,$header-color2,$header-color3,$header-color4,$hea
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
   $bar-lengths: 1,1,1,1,1,1,1,1,0;
-  $left-offsets:2.5,2.2,1.9,1.6,1.3,1,0.7,0.7,0;
+  $left-offsets:2.2,2.2,1.9,1.6,1.3,1,0.7,0.7,0;
 
   @each $i in $bars {
   .bar#{$i} {
