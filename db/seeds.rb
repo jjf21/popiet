@@ -30,6 +30,8 @@ def product_details(product_bloc)
 end
 
 page
+Product.where("title ILIKE?", '%occasion%').each{|p| p.delete}
+
 
 # require 'csv'
 

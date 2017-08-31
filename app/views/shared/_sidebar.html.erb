@@ -12,6 +12,11 @@
         <% end %>
       </li>
       <li>
+        <%= link_to orders_path do %>
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>My orders
+        <% end %>
+      </li>
+      <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fa fa-sign-out" aria-hidden="true"></i>Log out
         <% end %>
