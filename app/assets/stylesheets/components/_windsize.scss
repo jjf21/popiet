@@ -1,23 +1,3 @@
-
-$swimlane-height: 40px;
-$grid: 72px;
-$bars:1,2,3,4,5,6,7,8,9;
-$bar-lengths: 3,3,3,3,3,3,3,3,0;
-$left-offsets:9,8,7,6,5,4,3,2,1;
-$bar-color:rgba(10,39,65,0.7);
-$toolbox-color:rgba(137,188,203, 1);
-$header-color1: $blue;
-$header-color2: $blue;
-$header-color3: $blue;
-$header-color4: $blue;
-$header-color5: $blue;
-$header-color6: $blue;
-$header-color7: $blue;
-$header-color8: $blue;
-$header-color9: rgba(10,39,65,0.7);
-$header-colors: $header-color1,$header-color2,$header-color3,$header-color4,$header-color5,$header-color6,$header-color7,$header-color8,$header-color9;
-
-
 @mixin renderHeader($color) {
   display: inline-block;
   width: 10%;
@@ -59,13 +39,34 @@ $header-colors: $header-color1,$header-color2,$header-color3,$header-color4,$hea
   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
 }
 
-@each $i in $bars {
+$swimlane-height: 40px;
+$grid: 72px;
+$bars:1,2,3,4,5,6,7,8,9;
+$bar-color:rgba(10,39,65,0.7);
+$toolbox-color:rgba(137,188,203, 1);
+$header-color1: $blue;
+$header-color2: $blue;
+$header-color3: $blue;
+$header-color4: $blue;
+$header-color5: $blue;
+$header-color6: $blue;
+$header-color7: $blue;
+$header-color8: $blue;
+$header-color9: rgba(10,39,65,0.7);
+$header-colors: $header-color1,$header-color2,$header-color3,$header-color4,$header-color5,$header-color6,$header-color7,$header-color8,$header-color9;
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  $bar-lengths: 1,1,1,1,1,1,1,1,0;
+  $left-offsets:2.5,2.2,1.9,1.6,1.3,1,0.7,0.7,0;
+
+  @each $i in $bars {
   .bar#{$i} {
     @include renderBar(nth($left-offsets, $i)*$grid, nth($bar-lengths, $i)*$grid);
   }
-}
-
+};
 @for $i from 1 through 9 {
+
   .bar#{$i} {
     @include renderBar(nth($left-offsets, $i)*$grid, nth($bar-lengths, $i)*$grid);
   }
@@ -76,6 +77,32 @@ $header-colors: $header-color1,$header-color2,$header-color3,$header-color4,$hea
     @include renderSwimlane(rgba(nth($header-colors, $i), 0.6));
   }
 }
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  $bar-lengths: 3,3,3,3,3,3,3,3,0;
+  $left-offsets:9,8,7,6,5,4,3,2,1;
+@each $i in $bars {
+  .bar#{$i} {
+    @include renderBar(nth($left-offsets, $i)*$grid, nth($bar-lengths, $i)*$grid);
+  }
+};
+@for $i from 1 through 9 {
+
+  .bar#{$i} {
+    @include renderBar(nth($left-offsets, $i)*$grid, nth($bar-lengths, $i)*$grid);
+  }
+  .header#{$i} {
+    @include renderHeader(nth($header-colors, $i));
+  }
+  .swimlane#{$i} {
+    @include renderSwimlane(rgba(nth($header-colors, $i), 0.6));
+  }
+}
+}
+
 
 // override jquery ui theme
 .ui-resizable {
