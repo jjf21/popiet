@@ -5,7 +5,7 @@ class OrderPolicy < ApplicationPolicy
     end
   end
 
-  def create?
+  def create? 
     user
   end
 end
