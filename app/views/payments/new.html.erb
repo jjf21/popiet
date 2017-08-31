@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+            <div class="panel panel-default" style='margin-top:30px;'>
+                <div class="panel-heading">Order summary</div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order n°</th>
+                                <th>Product</th>
+                                <th class="text-center">Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style='background-color: #fff;'>
+                                <td class="col-md-2" style='line-height: 50px;'>#<%= @order.id %></td>
+                                <td class="col-md-7">
+                                  <img src='<%= @order.product.image_link %>' style=' width: 50px;'>
+                                  <span><%= @order.product.title %></span>
+                                  </td>
+                                <td class="col-md-1 text-center" style='line-height: 50px;'><strong><%= @order.amount %>.00 €</strong></td>
+                                <td class="col-sm-3 col-md-3" style='line-height: 50px;'>
+                                    <%= form_tag order_payments_path(@order) do %>
+                                      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                        data-name="<%= @order.product.title %>"
+                                        data-email="<%= current_user.email %>"
+                                        data-description="Have a nice evening "
+                                        data-amount="<%= @order.amount * 100%>"
+                                        data-currency="<%= 'EUR' %>">
+                                      </script>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

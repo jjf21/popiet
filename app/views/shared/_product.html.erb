@@ -6,10 +6,11 @@
     
       <hr class="line">
       <div class="row details-product">
-        <p class="price pull-left"><%= product.price %> €</p>
-        <a href="<%= product.product_link %>" target="_blank" >  
-         <button class="btn btn-primary pull-right" > BUY ITEM</button>
-        </a>
+        <p class="price pull-left"><%= product.price %> €</p>  
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'product_id', product.id %>
+          <%= submit_tag 'BUY ITEM', class: 'btn btn-primary pull-right' %>
+        <% end %>
       </div>
     </div>
   </span>

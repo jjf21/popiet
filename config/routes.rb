@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'messengerbot/webhook', to: 'facebook_messenger_bot#chalenge'
   post 'messengerbot/webhook', to: 'facebook_messenger_bot#webhook'
 
+  resources :orders, only: [:index, :show, :create] do
+    resources :payments, only: [:new, :create]
+  end
 
 
   devise_for :users,

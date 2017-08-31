@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class='col-xs-4'>
+      <%= image_tag 'homer.png', class:'image-homer'%>
+    </div>
+    <div class='col-xs-6'>
+      <h2>Thanks for your purchase! See you on the water...</h2>
+      <ul>
+        <li>Status: <span class="label label-success"><%= @order.state %></span></li>
+        <li>Item: <%= @order.product_id %></li>
+        <li>Amount: <%= @order.amount %>.00 €</li>
+      <ul>
+    </div>    
+  </div>
+</div>
+<style>
+  .image-homer{
+    max-height:300px;
+  }
+</style>
