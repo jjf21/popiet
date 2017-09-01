@@ -42,15 +42,6 @@ class HandleBotMessaging
       answered = true
 
     end
-
-    if !text.blank? && answered == false && text != 'What are you looking for?'
-        p text
-        message = "Sorry, I didn't catch what you tried to tell me"
-        MessengerBot.new.send_message_text(sender_id, message)
-        message = begining_replies('')
-        MessengerBot.new.send_message(sender_id, message)
-        answer = true
-    end
     
     sleep(4)
   end
